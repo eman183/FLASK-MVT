@@ -1,5 +1,4 @@
 from flask_sqlalchemy import SQLAlchemy
-
 db=SQLAlchemy()
 
 
@@ -20,9 +19,14 @@ class Post(db.Model):
      def get_all_posts(cls):
          return cls.query.all()
 
-    
-
-
+  
      @classmethod
-     def show_post(cls,id):
-       return cls.query.get_or_404(id)
+     def get_specific_object(cls, id):
+        return  cls.query.get_or_404(id)
+     
+
+  
+     def delete_post(self):
+          db.session.delete(self)
+          db.session.commit()
+          return True
