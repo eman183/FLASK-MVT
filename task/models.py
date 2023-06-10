@@ -12,6 +12,11 @@ class Post(db.Model):
      data=db.Column(db.LargeBinary ,default=None)
 
 
+class Category(db.Model):
+     __tablename__="Category"
+     id=db.Column(db.Integer,primary_key=True)
+     title=db.Column(db.String(20))
+
      def __str__(self):
           return self.title
      
