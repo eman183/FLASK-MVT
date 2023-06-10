@@ -1,7 +1,8 @@
 # intialize app
 from flask import Flask
 from task.config import project_config
-from task.models import  db ,Post
+from task.models import  db 
+from flask_migrate import Migrate
 # from flask_migrate import Migrate
 
 
@@ -13,6 +14,8 @@ def create_app(config_name):
 
     app.config.from_object(app_config)
     db.init_app(app)
+    #add migration
+    migrate=Migrate(app,db,render_as_batch=True)
   
     # from task.posts.views import get_posts
     # app.add_url_rule("/posts",view_func=get_posts,endpoint="get.posts")
